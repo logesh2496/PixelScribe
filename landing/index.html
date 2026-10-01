@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelScribe — Your Mac Renames Screenshots Automatically</title>
+  <meta name="description" content="PixelScribe watches your Downloads, Desktop & Screenshots folders and renames IMG_4821.jpg → golden-gate-sunset.jpg automatically. One-time $9 license. Mac app." />
+  <meta property="og:title" content="PixelScribe — Automatic Image Renaming for Mac" />
+  <meta property="og:description" content="Never hunt for a file named IMG_4821 again. PixelScribe silently renames your screenshots and photos to something meaningful." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖼️</text></svg>" />
+  <link rel="stylesheet" href="style.css?v=2" />
+  <!-- DodoPayments SDK -->
+  <script src="https://js.dodopayments.com/v1/dodo.js" defer></script>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════ -->
+<section id="hero">
+  <div class="page-wrap">
+
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Mac menu bar app · No subscription ever
+    </div>
+
+    <h1 class="hero-headline">
+      Your screenshots &amp; downloads,<br>
+      <em>named like a human.</em>
+    </h1>
+
+    <p class="hero-sub">
+      PixelScribe sits quietly in your menu bar and watches your folders.
+      The moment a new image lands — it's renamed to describe what's actually in it. Automatically.
+    </p>
+
+    <!-- cycling filename badge -->
+    <div class="hero-badge" aria-hidden="true">
+      <span class="badge-before" id="badge-before">IMG_4821.jpg</span>
+      <span class="badge-arrow">→</span>
+      <span class="badge-after" id="badge-after">golden-gate-sunset.jpg</span>
+    </div>
+
+    <div class="cta-wrap">
+      <button class="btn-cta" id="hero-cta" data-cta aria-label="Buy PixelScribe for $9">
+        Get PixelScribe &nbsp;
+        <span class="btn-cta-price">
+          <s>$18</s> $9
+        </span>
+      </button>
+      <span class="cta-note">One-time payment · Mac only · Instant download after purchase</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     DEMO SECTION
+     ════════════════════════════════════════ -->
+<section id="demo">
+  <div class="page-wrap">
+
+    <p class="demo-label">Watch it work</p>
+
+    <div class="demo-scene" role="img" aria-label="Animated demo showing PixelScribe renaming screenshots in real time">
+
+      <!-- ── BEFORE widget: plain mess of files ── -->
+      <div>
+        <div class="demo-window" aria-hidden="true" style="margin-bottom:0">
+          <!-- macOS traffic-light buttons -->
+          <div style="display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span style="width:10px;height:10px;border-radius:50%;background:#ff5f56;display:block;"></span>
+            <span style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;display:block;"></span>
+            <span style="width:10px;height:10px;border-radius:50%;background:#27c93f;display:block;"></span>
+            <span style="flex:1;font-size:11px;color:rgba(255,255,255,0.4);text-align:center;">Downloads</span>
+          </div>
+          <!-- File rows — messy before state -->
+          <ul style="list-style:none;padding:8px 0;">
+            <li style="display:flex;align-items:center;gap:10px;padding:5px 14px;">
+              <span style="font-size:16px;">🖼️</span>
+              <span style="font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:rgba(255,255,255,0.5);">IMG_4821.jpg</span>
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;padding:5px 14px;">
+              <span style="font-size:16px;">🖼️</span>
+              <span style="font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:rgba(255,255,255,0.5);">Screenshot 2024-09-28 at…</span>
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;padding:5px 14px;">
+              <span style="font-size:16px;">🖼️</span>
+              <span style="font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:rgba(255,255,255,0.5);">IMG_0032_BURST.jpg</span>
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;padding:5px 14px;opacity:0.4;">
+              <span style="font-size:16px;">🖼️</span>
+              <span style="font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:rgba(255,255,255,0.5);">image (1).png</span>
+            </li>
+          </ul>
+        </div>
+        <p class="demo-tag" style="color:rgba(248,113,113,0.7);">😩 Before</p>
+      </div>
+
+      <!-- ── Arrow ── -->
+      <div class="demo-arrow" aria-hidden="true">
+        <span class="demo-arrow-icon">→</span>
+        <span style="font-size:10px;letter-spacing:0.05em;text-transform:uppercase;">PixelScribe</span>
+      </div>
+
+      <!-- ── AFTER: PixelScribe floating widget ── -->
+      <div>
+        <div class="demo-window" id="demo-widget" aria-hidden="true">
+          <!-- Header -->
+          <div class="w-header">
+            <span class="w-dot active" id="demo-dot"></span>
+            <span class="w-title">PixelScribe</span>
+            <div class="w-tabs">
+              <span class="w-tab on">Live</span>
+              <span class="w-tab">Cleanup</span>
+            </div>
+            <span class="w-gear" style="margin-left:8px;font-size:13px;color:rgba(255,255,255,0.25);">⚙</span>
+            <span class="w-chevron" style="margin-left:4px;">⌃</span>
+          </div>
+
+          <!-- Feed — rows get animated by demo.js -->
+          <ul class="w-feed">
+            <!-- Row 0 -->
+            <li class="w-row" id="demo-row-0">
+              <!-- ring (processing state) -->
+              <svg class="w-ring" viewBox="0 0 28 28">
+                <circle class="w-ring-circle-bg" cx="14" cy="14" r="10"/>
+                <circle class="w-ring-circle-fill" cx="14" cy="14" r="10"
+                  style="stroke-dasharray:0 62.83"/>
+              </svg>
+              <!-- check (done state, hidden initially) -->
+              <svg class="w-ring" style="display:none;" viewBox="0 0 28 28">
+                <circle class="w-ring-check" cx="14" cy="14" r="10"/>
+                <polyline class="w-ring-check-mark" points="9,14 13,18 19,10"/>
+              </svg>
+              <!-- label -->
+              <div class="w-label">
+                <span class="w-msg">IMG_4821.jpg</span>
+                <span class="w-names" style="display:none;">
+                  <span class="wn-old">IMG_4821.jpg</span>
+                  <span class="wn-arr">→</span>
+                  <span class="wn-new">golden-gate-sunset.jpg</span>
+                </span>
+              </div>
+              <!-- action -->
+              <div class="w-action">
+                <div class="w-undo-btn" title="Undo">↩</div>
+              </div>
+            </li>
+
+            <!-- Row 1 -->
+            <li class="w-row" id="demo-row-1">
+              <svg class="w-ring" viewBox="0 0 28 28">
+                <circle class="w-ring-circle-bg" cx="14" cy="14" r="10"/>
+                <circle class="w-ring-circle-fill" cx="14" cy="14" r="10"
+                  style="stroke-dasharray:0 62.83"/>
+              </svg>
+              <svg class="w-ring" style="display:none;" viewBox="0 0 28 28">
+                <circle class="w-ring-check" cx="14" cy="14" r="10"/>
+                <polyline class="w-ring-check-mark" points="9,14 13,18 19,10"/>
+              </svg>
+              <div class="w-label">
+                <span class="w-msg">IMG_4821.jpg</span>
+                <span class="w-names" style="display:none;">
+                  <span class="wn-old">IMG_4821.jpg</span>
+                  <span class="wn-arr">→</span>
+                  <span class="wn-new">golden-gate-sunset.jpg</span>
+                </span>
+              </div>
+              <div class="w-action">
+                <div class="w-undo-btn" title="Undo">↩</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <p class="demo-tag" style="color:#4ade80;">✨ After (live)</p>
+      </div>
+
+    </div><!-- /demo-scene -->
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PAIN POINTS
+     ════════════════════════════════════════ -->
+<section id="pain">
+  <div class="page-wrap">
+
+    <div class="section-header reveal">
+      <p class="section-eyebrow">The Problem</p>
+      <h2 class="section-title">Your Downloads folder is a cemetery<br>of unidentifiable images.</h2>
+    </div>
+
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <span class="pain-icon">🗂️</span>
+        <h3 class="pain-headline">Hundreds of files you'll never find again</h3>
+        <p class="pain-body"><code style="font-family:'SF Mono',monospace;font-size:11px;color:rgba(248,113,113,0.8)">IMG_4821.jpg</code> tells you nothing. Spotlight can't help. You're stuck scrolling thumbnails.</p>
+      </div>
+
+      <div class="pain-card reveal" style="transition-delay:0.08s">
+        <span class="pain-icon">⏱️</span>
+        <h3 class="pain-headline">Manual renaming steals your focus</h3>
+        <p class="pain-body">Every rename is a context switch. Multiply that across 20 screenshots a day and you're losing real time to a solved problem.</p>
+      </div>
+
+      <div class="pain-card reveal" style="transition-delay:0.16s">
+        <span class="pain-icon">🔍</span>
+        <h3 class="pain-headline">Spotlight is useless without good names</h3>
+        <p class="pain-body">macOS search is only as good as your filenames. PixelScribe makes every image instantly searchable by its actual content.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     HOW IT WORKS
+     ════════════════════════════════════════ -->
+<section id="how">
+  <div class="page-wrap">
+
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Simple Setup</p>
+      <h2 class="section-title">Running in under 2 minutes.</h2>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Install the app</div>
+          <div class="step-desc">Download the <code style="font-family:'SF Mono',monospace;font-size:11.5px;background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;">.dmg</code>, drag PixelScribe to your Applications folder. Done.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Add your free NVIDIA API key</div>
+          <div class="step-desc">Open PixelScribe → Settings (⚙️) → paste your key. Takes 60 seconds. The NVIDIA NIM API is free — no credit card needed. <a href="#guide" style="color:#60a5fa;text-decoration:none;">See guide below ↓</a></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">That's it — just use your Mac</div>
+          <div class="step-desc">Drop any image into Downloads, Desktop, or Screenshots. PixelScribe renames it in the background. Undo anytime from the widget.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PRICING
+     ════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="page-wrap">
+
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Pricing</p>
+      <h2 class="section-title">One price. Yours forever.</h2>
+    </div>
+
+    <div class="pricing-card reveal">
+      <p class="pricing-name">PixelScribe for Mac</p>
+
+      <div class="pricing-amount">
+        <span class="pricing-original">$18</span>
+        <span class="pricing-price"><sup class="pricing-price-sup">$</sup>9</span>
+      </div>
+      <p class="pricing-note">One-time payment · No subscription · No renewal</p>
+
+      <ul class="pricing-features">
+        <li>
+          <span class="feat-check">✓</span>
+          Lifetime license — buy once, keep forever
+        </li>
+        <li>
+          <span class="feat-check">✓</span>
+          Live background folder watching
+        </li>
+        <li>
+          <span class="feat-check">✓</span>
+          Cleanup mode — rename existing images in bulk
+        </li>
+        <li>
+          <span class="feat-check">✓</span>
+          Undo &amp; Redo every rename with one click
+        </li>
+        <li>
+          <span class="feat-check" style="background:rgba(59,130,246,0.15);color:#60a5fa;">★</span>
+          Free NVIDIA image-to-text API included <span style="font-size:11px;color:var(--text-3);">(bring your own key)</span>
+        </li>
+        <li>
+          <span class="feat-check">✓</span>
+          macOS native — tiny footprint, no subscription SaaS
+        </li>
+      </ul>
+
+      <button class="btn-cta-lg" id="pricing-cta" data-cta aria-label="Buy PixelScribe for $9">
+        Get PixelScribe — $9
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <p class="pricing-bottom-note">
+        Secure checkout via DodoPayments · Mac 12+ · Apple Silicon &amp; Intel
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     NVIDIA API KEY GUIDE
+     ════════════════════════════════════════ -->
+<section id="guide">
+  <div class="page-wrap">
+
+    <div class="guide-wrap">
+
+      <div class="section-header reveal" style="margin-bottom:20px">
+        <p class="section-eyebrow">Free AI — No Credit Card</p>
+        <h2 class="section-title" style="font-size:clamp(20px,3vw,28px)">Getting your NVIDIA API key takes 60 seconds.</h2>
+      </div>
+
+      <div class="guide-intro reveal" style="margin-bottom:20px">
+        <p>
+          PixelScribe uses <a href="https://build.nvidia.com" target="_blank" rel="noopener">NVIDIA NIM</a> — a free-tier vision AI — to understand what's in your images and generate descriptive names.
+          You bring your own key, so there's no middleman and no monthly bill.
+        </p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" aria-expanded="false" aria-controls="acc-body" id="acc-guide-btn">
+          <span>Step-by-step: Get your free NVIDIA API key</span>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-body" id="acc-body" role="region" aria-labelledby="acc-guide-btn">
+          <div class="acc-inner">
+            <ol class="guide-steps">
+              <li class="guide-step">
+                <span class="gs-num">1</span>
+                <span class="gs-text">
+                  Go to <a href="https://build.nvidia.com" target="_blank" rel="noopener">build.nvidia.com</a> and click <strong>Sign In</strong> (top right). Create a free account if you don't have one.
+                </span>
+              </li>
+              <li class="guide-step">
+                <span class="gs-num">2</span>
+                <span class="gs-text">
+                  In the left sidebar, click <strong>API Keys</strong> (or navigate to <code>build.nvidia.com/keys</code>).
+                </span>
+              </li>
+              <li class="guide-step">
+                <span class="gs-num">3</span>
+                <span class="gs-text">
+                  Click <strong>+ Generate API Key</strong>. Give it any name (e.g. <code>pixelscribe</code>).
+                </span>
+              </li>
+              <li class="guide-step">
+                <span class="gs-num">4</span>
+                <span class="gs-text">
+                  Copy the key starting with <code>nvapi-...</code> — it's only shown once, so save it somewhere safe.
+                </span>
+              </li>
+              <li class="guide-step">
+                <span class="gs-num">5</span>
+                <span class="gs-text">
+                  Open PixelScribe → click the <strong>⚙ Settings</strong> icon → paste the key in the <strong>NVIDIA API Key</strong> field → click <strong>Save Settings</strong>. Done!
+                </span>
+              </li>
+            </ol>
+
+            <div class="guide-free-badge">
+              ✓ Free tier · No credit card · Generous monthly quota
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer>
+  <div class="page-wrap">
+    <p>
+      PixelScribe © 2024 &nbsp;·&nbsp;
+      Made for macOS &nbsp;·&nbsp;
+      Questions? <a href="mailto:support@pixelscribe.app">support@pixelscribe.app</a>
+    </p>
+  </div>
+</footer>
+
+<script src="demo.js" defer></script>
+<script src="main.js" defer></script>
+</body>
+</html>
